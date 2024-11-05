@@ -33,6 +33,32 @@ function Mequ:projects()
     }
 end
 
+function Mequ:printAll()
+    print("Name: " .. self.name)
+    print("Date of Birth: " .. self.dateOfBirth)
+
+    
+    print("Languages:")
+    for language, level in pairs(self:languages()) do
+        print("  " .. language .. ": " .. level)
+    end
+    
+    print("Education:")
+    for year, edu in pairs(self:education()) do
+        print("  " .. year .. ": " .. edu)
+    end
+    
+    print("Projects:")
+    for _, project in ipairs(self:projects()) do
+        print("  - " .. project)
+    end
+
+end
+
+local mequ = Mequ:self()
+mequ:printAll()
+
+
 ``````
 ###
 
