@@ -12,6 +12,14 @@ function Mequ:self()
     return obj
 end
 
+function Mequ:languages()
+    return {
+        ['Polish'] = 'Native',
+        ['English'] = 'Fluent',
+        ['German'] = 'Beginner'
+    }
+end
+
 function Mequ:education()
     return {
         ['2020-now'] = 'Learning Lua'
