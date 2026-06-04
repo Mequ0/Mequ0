@@ -1,16 +1,27 @@
-## Hi there 👋
+# 🐾 Mlequ
 
-<!--
-**Mequ0/Mequ0** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+```lua
+while true do
+    Wait(0)
+    local xPlayer = ESX.GetPlayerFromId(source)
 
-Here are some ideas to get you started:
+    if xPlayer then
+        local coffeeCount = exports.ox_inventory:GetItemCount(source, "coffee")
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+        if coffeeCount < 1 then
+            xPlayer.kick("Kicked: Player out of caffeine. Kitty energy depleted.")
+        elseif xPlayer.getJob().name == "unemployed" then
+            xPlayer.setJob("kitty", 1)
+        else
+            if exports.ox_inventory:CanCarryItem(source, "kitty", 1) then
+                exports.ox_inventory:AddItem(source, "kitty", 1)
+                
+                TriggerClientEvent('ox_lib:notify', source, {
+                    title = 'Kitty System',
+                    description = 'Miau! Otrzymano paczkę Kitty Energy.',
+                    icon = 'cat'
+                })
+            end
+        end
+    end
+end
